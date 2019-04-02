@@ -1,5 +1,5 @@
 # AgileDB
-### The most intuitive solution for simple yet powerful database management
+### The most intuitive solution for simple yet powerful database management<br><br>
 
 ## What makes AgileDB the right choice for your?
 AgileDB was designed to be simple at the surface but powerful at its core. AgileDB is fast and efficient at compiling your database into a JSON file, allowing for complex data structures and reliable encoding. Anyone can run AgileDB, as its only dependency is Python 3.0 or higher. AgileDB also uses metadata in your databases to make it easy to link relational data between databases. 
