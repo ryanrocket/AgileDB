@@ -41,6 +41,9 @@ def init():
     os.system("touch agile_data/metadata/syslog.log")
     os.system("touch agile_data/metadata/verification.txt")
     logging.basicConfig(filename='agile_data/metadata/syslog.log', level=logging.DEBUG)
+    pwd = os.popen("pwd").read()
+    pwd = pwd.rstrip("\n")
+    os.system("echo \"alias agile='python3 " + pwd + "/cli.py'\" >> ~/.bashrc")
     main.sysout("filesystem initilized")
     bscLog("filesystem initilized")
 
