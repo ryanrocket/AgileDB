@@ -5,9 +5,9 @@
 AgileDB was designed to be simple at the surface but powerful at its core. AgileDB is fast and efficient at compiling your database into a JSON file, allowing for complex data structures and reliable encoding. Anyone can run AgileDB, as its only dependency is Python 3.0 or higher. AgileDB also uses metadata in your databases to make it easy to link relational data between databases. 
 
 ## How do I install AgileDB and how do I get started?
-To install AgileDB, simple move into a directory where you wish to store AgileDB's contents and clone the repo. To start AgileDB, simple run the command:
+To install AgileDB, simple move into a directory where you wish to store AgileDB's contents and clone the repo. To start AgileDB, simple run the command:<br>
 ```python3 cli.py```
-Once the CLI starts up you can run the following command to initialize the filesystem for database storage. This process is not done on installation so running this command on first start is paramount.
+Once the CLI starts up you can run the following command to initialize the filesystem for database storage. This process is not done on installation so running this command on first start is paramount.<br>
 ```[ agile ] init```
 Once the `init` command has been run, the filesystem is good to go for database storage. From here, AgileDB is ready to run, its just that simple.
 
