@@ -62,7 +62,9 @@ module.exports = {
         let formdata = JSON.parse(rawdata);
         return formdata;
     },
-    varOut: queOut
+    version: function() {
+	    return 'AgileDB v0.1.5 / 2.28.2019'
+    }
 };
 
 function slc (db, type, key) {
