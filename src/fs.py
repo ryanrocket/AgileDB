@@ -10,6 +10,9 @@ import json
 
 global curDb
 
+#/script_dir = os.path.dirname(__file__)
+#/print(script_dir)
+
 ## handlr
 def handle(func):
     global curDb
@@ -21,7 +24,7 @@ def handle(func):
 def use(dbname):
     global curDb
     curDb = str(dbname)
-    main.sysout("database is now set to: " + curDb)
+    ## main.sysout("database is now set to: " + curDb)
 
 def back():
     global curDb
@@ -52,7 +55,7 @@ def crtEmptDb(absFilNam):
     finFilNam = absFilNam + ".json"
     os.system("touch agile_data/stored_local/" + finFilNam)
     initStruct = {'<DB_NAME>': absFilNam}
-    with open("agile_data/stored_local/" + finFilNam, 'w') as f:
+    with open("/home/ubuntu/agile_data/stored_local/" + finFilNam, 'w') as f:
         json.dump(initStruct, f)
         f.close()
     main.sysout("created database " + absFilNam)
@@ -75,11 +78,11 @@ def addRelData(key, val):
         print("you cannot include the characters < or > in your key")
     else:
         structUp = {key: val}
-        with open("agile_data/stored_local/" + jsonfl, 'r') as f:
+        with open("/home/ubuntu/agile_data/stored_local/" + jsonfl, 'r') as f:
             localData = json.load(f)
             f.close()
         localData.update(structUp)
-        with open("agile_data/stored_local/" + jsonfl, 'w') as f:
+        with open("/home/ubuntu/agile_data/stored_local/" + jsonfl, 'w') as f:
             json.dump(localData, f)
             f.close()
         main.sysout("relational value updated")
@@ -94,11 +97,11 @@ def addListData(name):
     jsonfl = curDb + ".json"
     name = str(name)
     structUp = {name: []}
-    with open("agile_data/stored_local/" + jsonfl, 'r') as f:
+    with open("/home/ubuntu/agile_data/stored_local/" + jsonfl, 'r') as f:
         localData = json.load(f)
         f.close()
     localData.update(structUp)
-    with open("agile_data/stored_local/" + jsonfl, 'w') as f:
+    with open("/home/ubuntu/agile_data/stored_local/" + jsonfl, 'w') as f:
         json.dump(localData, f)
         f.close()
     main.sysout("list has been added")
@@ -111,11 +114,11 @@ def appListData(listname, val):
     listname = str(listname)
     val = str(val)
     ## structUp = {listname: [val]}
-    with open("agile_data/stored_local/" + jsonfl, 'r') as f:
+    with open("/home/ubuntu/agile_data/stored_local/" + jsonfl, 'r') as f:
         localData = json.load(f)
         f.close()
     localData[listname].append(val)
-    with open("agile_data/stored_local/" + jsonfl, 'w') as f:
+    with open("/home/ubuntu/agile_data/stored_local/" + jsonfl, 'w') as f:
         json.dump(localData, f)
         f.close()
     main.sysout("data was added to the list")
@@ -125,7 +128,7 @@ def appListData(listname, val):
 def display():
     global curDb
     jsonfl = curDb + '.json'
-    with open("agile_data/stored_local/" + jsonfl, 'r') as f:
+    with open("/home/ubuntu/agile_data/stored_local/" + jsonfl, 'r') as f:
         localData = json.load(f)
         f.close()
     print(json.dumps(localData, indent=2, sort_keys=True))
@@ -139,11 +142,11 @@ def addDictData(name):
     jsonfl = curDb + ".json"
     name = str(name)
     structUp = {name: {}}
-    with open("agile_data/stored_local/" + jsonfl, 'r') as f:
+    with open("/home/ubuntu/agile_data/stored_local/" + jsonfl, 'r') as f:
         localData = json.load(f)
         f.close()
     localData.update(structUp)
-    with open("agile_data/stored_local/" + jsonfl, 'w') as f:
+    with open("/home/ubuntu/agile_data/stored_local/" + jsonfl, 'w') as f:
         json.dump(localData, f)
         f.close()
     main.sysout("dict has been added")
@@ -157,12 +160,12 @@ def updDictData(name, key, val):
     val = str(val)
     key = str(key)
     ## structUp = {listname: [val]}
-    with open("agile_data/stored_local/" + jsonfl, 'r') as f:
+    with open("/home/ubuntu/agile_data/stored_local/" + jsonfl, 'r') as f:
         localData = json.load(f)
         f.close()
     structUp = {key: val}
     localData[name].update(structUp)
-    with open("agile_data/stored_local/" + jsonfl, 'w') as f:
+    with open("/home/ubuntu/agile_data/stored_local/" + jsonfl, 'w') as f:
         json.dump(localData, f)
         f.close()
     main.sysout("data was added to the dict")
@@ -172,7 +175,7 @@ def select(type, keyOrg):
     global curDb
     jsonfl = curDb + ".json"
     keyOrg = str(keyOrg)
-    with open("agile_data/stored_local/" + jsonfl, 'r') as f:
+    with open("/home/ubuntu/agile_data/stored_local/" + jsonfl, 'r') as f:
         localData = json.load(f)
         f.close()
     if (type == "rel"):
@@ -203,16 +206,12 @@ def addTag(tag):
     tag = str(tag)
     fullTag = "adb" + tag
     initStruct = {'<DB_TAG>': fullTag}
-    with open("agile_data/stored_local/" + jsonfl, 'r') as f:
+    with open("/home/ubuntu/agile_data/stored_local/" + jsonfl, 'r') as f:
         localData = json.load(f)
         f.close()
     localData.update(initStruct)
-    with open("agile_data/stored_local/" + jsonfl, 'w') as f:
+    with open("/home/ubuntu/agile_data/stored_local/" + jsonfl, 'w') as f:
         json.dump(localData, f)
         f.close()
     main.sysout("added db tag")
     bscLog("added db tag")
-
-        
-        
-
