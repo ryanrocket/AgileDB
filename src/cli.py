@@ -27,6 +27,14 @@ def getStat():
     except:
         stat ="CORRUPT"
 
+try:
+    if (sys.argv[1] != ""):
+        cli_raw = True
+    else:
+        cli_raw = False
+except:
+    cli_raw = False
+
 def run():
     global usrInp
     global version
@@ -34,12 +42,21 @@ def run():
     global curDb
     global stat
     # startup
-    print("AgileDB by Ryan Wans")
-    print("Running AgileDB Version " + main.version)
-    print("AgileDB FS Configuration: " + stat)
+    # print("AgileDB by Ryan Wans")
+    # print("Running AgileDB Version " + main.version)
+    # print("AgileDB FS Configuration: " + stat)
     while (True):
-        usrInp = input("[ agile ] ")
-        cmd = usrInp.split()
+        if (cli_raw == False):
+            usrInp = input("[ agile ] ")
+            cmd = usrInp.split()
+        elif (cli_raw):
+            cmd = sys.argv
+            if(cmd[1] == "dbSet"):
+                lcl = cmd[2]
+                fs.use(lcl)
+                del cmd[2]
+                del cmd[1]
+            del cmd[0]
         if (cmd[0] == 'use'):
             lcl = cmd[1]
             fs.use(lcl)
@@ -93,8 +110,9 @@ def run():
             fs.select(lcl, ara)
         else: 
             main.sysout("invalid command or arguments")
-
-getStat()
+        if(cli_raw):
+            exit()
 while (True):
     run()
-    continue
+    if(cli_raw):
+        break
